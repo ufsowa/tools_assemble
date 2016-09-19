@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export LC_ALL=C
 SOURCE="${BASH_SOURCE[0]}"
 PTH=$( dirname "$SOURCE" )
 SRC=$PTH
@@ -26,6 +27,8 @@ for i in ./r_* ; do
 	printf "%s %s " $scr $nfile
 	$SRC/recal_r.py $nfile $scr $STEP		# 1 - input; 2 - output
 	if [ -s "raw${scr}" ]; then 
+	file="raw${scr}"
+	sort -n -k1,1 $file > tmp; mv tmp $file
 	echo "--> ok";
 	else echo "--> miss"; fi
 	fi
@@ -43,6 +46,8 @@ for i in ./r2_* ; do
 	printf "%s %s " $scr $nfile
 	$SRC/recal_r2.py $nfile $scr $STEP		# 1 - input; 2 - output
 	if [ -s "raw${scr}" ]; then 
+	file="raw${scr}"
+	sort -n -k1,1 $file > tmp; mv tmp $file
 	echo "--> ok";
 	else echo "--> miss"; fi
 	fi

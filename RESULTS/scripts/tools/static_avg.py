@@ -109,7 +109,7 @@ for k in pliki:
 
     if(BEG>0):							#avg
 	    fname="static.avg"
-	    ncol=cal_mean(BEG,LAST,DATA,fname,k)
+	    tmp_col=cal_mean(BEG,LAST,DATA,fname,k)
 	    if(tmp_col > ncol):
 		ncol=tmp_col
 
@@ -122,5 +122,4 @@ if(BEG>0):
     total_mean(DATA)
 fout.close()
 
-print "Parametry:"
 print sys.argv[:4]
