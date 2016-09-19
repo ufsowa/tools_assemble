@@ -6,6 +6,5 @@ PTH=$( dirname "$SOURCE" )
 SRC="$PTH/tools"
 
 #$SRC/recal.sh
-#$SRC/static_avg.sh
-$SCR/static_loop.sh
-
+$SRC/static_avg.sh "half" "last"
+$SRC/static_loop.sh 20

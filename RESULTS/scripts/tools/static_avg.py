@@ -11,16 +11,17 @@ fout = open(nazwa,"a")
 
 def cal_mean(mini,maxi,data,fname,k):
     TMP=[]
+    ind = (data[0] >= mini) & (data[0] < maxi)
     for i in data:
-	new=i[mini:maxi]
+	new=i[ind]
 	TMP.append(new)
-#    print len(TMP[0])
     RESULTS=[]
     for i in TMP:
 	if not i.size:
 	    RESULTS=[]
 	    break;
-	new=np.mean(i)
+	finite=i[np.isfinite(i)]
+	new=np.mean(finite)
 	RESULTS.append(new)
 #    print mini,maxi,fname,k, len(RESULTS)
     if RESULTS:
@@ -34,25 +35,24 @@ def cal_mean(mini,maxi,data,fname,k):
 
 def total_mean(DATA):
     if(len(DATA)==0):
-	print "no data in file static.factors";exit(1);
+	print "no data in the bin";exit(1);
     nr_row=DATA[0].size
-    if(nr_row==1):
-#    #    print "just one line in file"
-	col=len(DATA)
-	DATA=np.reshape(DATA,(col,1))
-#    #print ncol,DATA,WAGA
-    RESULTS=[]; 
-    for i in range(0,len(DATA)):
-	d=DATA[i]
-	new=np.mean(d)
-	sig=np.std(d)
-	RESULTS.append(new)
-	RESULTS.append(sig)
-
-    fout.write("%f" % (RESULTS[0]))
-    for i in RESULTS[1:]:
-	fout.write(" %f" % (i))
-    fout.write("\n")
+    if(nr_row>1):
+	#do nothing if only one row in the bin
+	#col=len(DATA)
+	#DATA=np.reshape(DATA,(col,1))
+	RESULTS=[]; 
+	for i in range(0,len(DATA)):
+	    d=DATA[i]
+	    finite=d[np.isfinite(d)]
+	    new=np.nanmean(finite)
+	    sig=np.nanstd(finite)
+	    RESULTS.append(new)
+	    RESULTS.append(sig)
+	fout.write("%f" % (RESULTS[0]))
+	for i in RESULTS[1:]:
+	    fout.write(" %f" % (i))
+	fout.write("\n")
 
 MAX=-1;BIN=-1;
 BEG=-1;LAST=-1;
@@ -83,16 +83,17 @@ for k in pliki:
 
     if(sys.argv[1]=="loop"):
 	MAX=int(sys.argv[2])
-	BIN=int(sys.argv[3])
+	BIN=float(sys.argv[3])
     elif(sys.argv[1]=="avg"):
 	if(sys.argv[2]=="half"):
-	    BEG=int(2*len(step)/3)
+	    ind=int(2*len(step)/3)
+	    BEG=step[ind]
 	else:
-	    BEG=int(sys.argv[2])
+	    BEG=float(sys.argv[2])
 	if(sys.argv[3]=="last"):
-	    LAST=-1
+	    LAST=step[-1]
 	else:
-	    LAST=int(sys.argv[2])
+	    LAST=float(sys.argv[2])
     else:
 	print "wrong option"; exit(1);
 
