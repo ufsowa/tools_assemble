@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+
+module load libs/python-numpy
+
+stpth=$PWD
+cd ../results/R/
+
+A=15425.0
+B=15424.0
+a=3.0
+
+name="raw"
+ST=0
+EN=9
+
+echo "
+fileslist=system(\"ls int_1.dat\")
+#plot for [i=6:6] 'int_'.i.'.dat' u 1:2 t 'int'.i,for [i=6:6] 'raw_'.i.'.dat' u 1:2 t 'row'.i									#compare raw with integrated
+#plot for [i=6:6] 'int_'.i.'.dat' u 1:8 t 'int'.i,for [i=6:6] 'r2_'.i.'.dat' u 2:19 t 'row'.i									#compare source with integrated
+#plot for [i=0:9] 'int_'.i.'.dat' u 1:(\$2*$A/\$6/$a) t 'fa_'.i,for [i=0:9] 'int_'.i.'.dat' u 1:(\$3*$B/\$8/$a) t 'fb_'.i					#factor from r2/nj
+#plot for [i=0:9] 'int_'.i.'.dat' u 1:(\$6/$A) t 'ja_'.i,for [i=0:9] 'int_'.i.'.dat' u 1:(\$8/$B) t 'jb_'.i							#jumps per atoms
+#plot for [i=0:9] 'int_'.i.'.dat' u 1:2 t 'r2a_'.i,for [i=0:9] 'int_'.i.'.dat' u 1:3 t 'r2b_'.i, 'avgdR2.dat' u 1:2 ps 3 pt 7					#r square
+#plot for [i=$ST:$EN] '${name}_'.i.'.dat' u 1:(\$2/\$1) t 'D2a_'.i,for [i=$ST:$EN] '${name}_'.i.'.dat' u 1:(\$3/\$1) t 'D2b_'.i						#diff from R/t
+#plot for [i=0:9] '${name}_'.i.'.dat' u 1:4 t 'fa_'.i, for [i=1:2] 'int_'.i.'.dat'u 1:5 t 'fb_'.i, 
+#plot 'avgdR.dat' u 2, 'avgdR.dat' u 5
+#plot 'avgdR2.dat' u 1:(\$2/\$1)
+#plot 'avgdR2.dat' u 1:4
+#plot 'stat.jumps' u 3,'stat.jumps' u 5
+plot 'static.factors' u 2, 'static.factors' u 5
+pause -1
+" > to_plot
+
+
+gnuplot to_plot

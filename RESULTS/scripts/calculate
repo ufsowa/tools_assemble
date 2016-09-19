@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+PTH=$( dirname "$SOURCE" )
+
+SRC="$PTH/tools"
+
+#$SRC/recal.sh
+$SRC/static_avg.sh
+#$SCR/static_loop
+

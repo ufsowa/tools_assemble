@@ -1,0 +1,62 @@
+#!/bin/bash
+
+edytuj()
+{
+#    myfile="u"$1"u"$2
+    #utworz katalog symulacji
+#    mkdir $myfile
+    #skopij zawartosc katalogu tamplate do kat. symulacji
+#    cp ../template/* ./$myfile
+    #wejdz do katalogu symulacji
+#    cd $myfile
+    #edytuj plik chem.in
+    sed -e 's/potencialy/'$chem1' '$chem2'/' chem.in > temp.in
+    cat temp.in > chem.in
+    rm temp.in
+    #edytuj plik conf.in
+    sed -e 's/TEMPERATURA/'$1'/' conf.in > temp.in
+    cat temp.in > conf.in
+    rm temp.in
+    sed -e 's/STECH/'$2'/' conf.in > temp.in
+    cat temp.in > conf.in
+    rm temp.in
+
+    #edytuj plik uruchomieniowy
+    sed 's/#PBS -N name/#PBS -N s'$2'/' run_sim > tmp
+    cat tmp > run_sim
+    
+    rm tmp
+    #wroc do katalogu uruchomieniowego
+    cd ..
+
+}
+
+
+echo "Tworze strukture katalogow..."
+
+
+
+export LC_NUMERIC=C
+
+
+stpth=$PWD
+templ=$PWD/template/*
+templ=$PWD/template/*
+Temp=1400.0
+#stech=1.0
+N=250
+
+cd data
+for i in ./S$1; do
+    cd $i
+    for j in ./sample* ; do
+	cd $j
+	cp ${templ} .
+	iter=${j##./sample}
+	sed -i 's/SAMPLE/s'$iter'/' run_sim
+	cd ..
+    done	#skonczylem wszystkie stech.xyz
+    cd ..
+done
+
+

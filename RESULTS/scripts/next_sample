@@ -1,0 +1,72 @@
+#!/bin/bash
+
+
+export LC_NUMERIC=C
+
+mkdir S
+stpth=$PWD
+cd data
+for i in ./S$1; do
+    cd $i
+    for j in ./sample* ; do
+	cd $j
+	ID=${j##./sample}
+	ok=0
+	name=""
+#	echo ${ID}
+	for k in *000pic.xyz ; do
+	    name=${k%%_*}
+	    echo $name $ok
+	    if [ $name -gt $ok ]; then
+		ok=$name
+	    fi
+	done
+#	cp -v $k $stpth/S/${ID}$k
+	FILE=${ok}*000pic.xyz
+	echo $FILE
+	cp -v $FILE "$stpth/S/stech${ID}.xyz"
+	cd ..
+    done
+    cd ..
+done
+
+
+
+
+
+
+
+
+#    name=${i#./}
+#    mkdir $stpth/data/$name
+#    cd $i
+#    iter=0
+#    for j in ./*stech.xyz ; do
+#	if [ $iter -lt $N ] ; then
+#	mkdir $stpth/data/$name/sample${iter}
+#	cp $j $stpth/data/$name/sample${iter}/start.in
+#	cp ${templ} $stpth/data/$name/sample${iter}/
+#	fi
+#	((iter++))
+#    done	#skonczylem wszystkie stech.xyz
+    #musze dorobic do N?
+#    nr_stech=$iter
+#    repeat=`awk -v n=$N -v d=$iter 'BEGIN{printf "%1.0d", n/d }'`
+    
+#    for (( k=0; k<$repeat; k++ )); do
+#	for j in ./*stech.xyz ; do
+#	    if [ $iter -lt $N ] ; then
+#		mkdir $stpth/data/$name/sample${iter}
+#		cp $j $stpth/data/$name/sample${iter}/start.in
+#		cp ${templ} $stpth/data/$name/sample${iter}/
+#	    fi
+#	    ((iter++))
+#	done	#skonczylem wszystkie stech.xyz
+#    done
+#    cd $stpth/data/$name
+#    echo "iter/ repeat: ("$repeat"+1)*"$nr_stech"="$iter
+#    nr_dir=`ls -l | grep -v ^l | wc -l`
+#    echo "nr dir/ nr stech: ("$nr_dir"-1)="$N
+#    cd $stpth
+#done
+

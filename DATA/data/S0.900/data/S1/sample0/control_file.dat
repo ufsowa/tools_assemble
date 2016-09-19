@@ -1,0 +1,87 @@
+conf.in
+Reading METHODS...
+RESIDENT par: 30000 200 10000 1400 
+Reading SAVINGS...
+Natoms par: 
+Rd2 par: 
+pic_diff par: 3000 0 0 0 50 50 50 
+Reading OPTIONS...
+Equilibrate vacancy option is: 0 in every 0 steps
+with bins: from 2 to 12 with size 2 in 1 axies with 0 move_sim_region
+Reading PARAMETERS...
+Memory reserved for: 25 25 25
+Interacione wector: 
+1.5 1.5 1.5
+Sample region:
+0 0 0
+50 50 50
+simulation area:
+0 0 0
+50 50 50
+boundary conditions for energy and atom: 0 - non | 1 - nn | normal
+50 50 50
+50 50 50
+Bazowe struktury: 1
+start.in
+st_vec: 0 0 0
+end_vec: 50 50 50
+set_vec: 0 0 0
+load_lattice_nr: 0
+Buduje matrix sitow
+unit_cell reading from structure.in...
+All conditions are taken with '/<' not '<=' 
+structure size: Lbord/Rbord/trans
+0 50 2
+0 50 2
+0 50 2
+atoms in unit cell: 2
+0 0 0 1 Ni 0 || 
+latt/typ:0/1 |sublatt_typ size 1 nr_sublattice 1
+size: |typ 2 |name: 2
+1 1 1 2 Al 1 || 
+latt/typ:1/2 |sublatt_typ size 2 nr_sublattice 2
+size: |typ 3 |name: 3
+atoms in cell: 2
+structure 0 readed ok
+Budowanie sample...
+czytam sobie start.in
+31250
+st 0 0 0
+end 25 25 25
+Total readed: 31250
+Zbudowano!
+Initialize potentials...
+energy_file reading from energy.in...
+Zapisane odziaływania: rmin 1.6 rmax 1.8
+V^(k)_ij 0 0 0 0
+V^(k)_ij 0 1 0 0.025
+V^(k)_ij 0 2 0 0.025
+V^(k)_ij 0 0 1 0.025
+V^(k)_ij 0 1 1 -0.05
+V^(k)_ij 0 2 1 -0.1
+V^(k)_ij 0 0 2 0.025
+V^(k)_ij 0 1 2 -0.1
+V^(k)_ij 0 2 2 -0.05
+Potentials initialized.
+Initialize boundary conditions... 
+atom list init..
+Atoms list - ok: 31250
+sim atom list init..
+Atoms list - ok: 31250
+Boundary conditions initialized 
+Checking boundary conditions... 
+Boundary condition <=0 or PBC are fine.
+
+Checking boundary conditions... 
+Boundary condition <=0 or PBC are fine.
+
+Initialized jump zone: with coordination zones: 8 
+Initiated interaction zone with coordination zones: 8 
+Starting schedule
+ Execute: RESIDENT par: 30000 200 10000 1400 
+set atom list typ/size: 0 / 1334
+Barriers initialized ...
+i 0j 0: 1000
+i 1j 0: 0.3
+i 2j 0: 0.578
+########

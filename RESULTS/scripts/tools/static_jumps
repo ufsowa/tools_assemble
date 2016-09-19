@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+
+module load libs/python-numpy
+
+stpth=$PWD
+cd ../results/R2/
+
+#cp $stpth/int_dR* .
+#rm stat.jumps
+#for i in ./r_* ; do
+#    tail -1 $i | awk 'BEGIN{ORS=FS}{for (i=15;i<NF;i++) print $i}' >> stat.jumps
+#    echo "" >>stat.jumps
+#done
+
+awk 'BEGIN{suma=0;a=0;b=0;}{a+=$3;b+=$5;d=$3-$5;suma+=d}END{print "(Na-Nb)/samples:";print a/NR,b/NR,(a/NR-b/NR),suma/NR}' stat.jumps

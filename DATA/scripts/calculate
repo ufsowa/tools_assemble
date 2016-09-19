@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+PTH=$( dirname "$SOURCE" )
+SRC="$PTH/tools"
+
+#echo "$0" > tmp
+#echo $PWD >> tmp
+#echo $SRC >> tmp
+
+$SRC/combine
+$SRC/collect
+
+#./integrate
+#./static_avg
+#./static_loop

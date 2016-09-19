@@ -1,0 +1,23 @@
+#!/bin/bash
+
+ID=`hostname`
+NAME=${PWD##*/}
+pth=$PWD
+SRC="$SCRATCH/ORD_TRAC_ASY"
+mkdir -p $SRC
+#cp ${SRC}/results.dat $SRC/${ID}.mi
+#cp ${SRC}/all.dat $SRC/${ID}.all
+
+cp ${pth}/results/R2/static.avg.dat $SRC/${NAME}_static_f.r2
+cp ${pth}/results/R2/static.factors.dat $SRC/${NAME}_static.r2
+
+#cp -R ${pth}/results $SRC/${NAME}
+
+#cp ${pth}/results/R2/avgdR2.dat $SRC/${ID}_avgdR2.dat
+#cp ${pth}/results/R2/bin/std.dat $SRC/${ID}_std.dat
+
+cp ${pth}/results/R/static.avg.dat $SRC/${NAME}_static_f.r
+cp ${pth}/results/R/static.factors.dat $SRC/${NAME}_static.r
+#cp ${pth}/results/R/cf.point $SRC/${ID}_cf.point
+#cp ${pth}/results/R/cf.points $SRC/${ID}_cf.points
+#cp ${pth}/results/R/avgdR.dat $SRC/${ID}_avgdR.dat

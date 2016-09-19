@@ -1,0 +1,60 @@
+#!/bin/bash
+
+#input variables
+N=$2
+
+# system variables
+export LC_NUMERIC=C
+SOURCE="${BASH_SOURCE[0]}"
+PTH=$( dirname "$SOURCE" )
+stpth=$PWD
+TEMP=$PWD/template
+templ=$PWD/template/*
+
+#check if template prepared
+EMPTY="0"
+ [ "$(ls -A $TEMP)" ] && EMPTY="1" || EMPTY="0";
+echo $EMPTY
+if [ $EMPTY == "0" ]; then echo "You need to prepare template first..." ;exit; fi
+
+#main body
+echo "Gen dir tree..."
+
+for i in ./S$1; do
+    name=${i#./}
+    mkdir $stpth/data/$name
+    cd $i
+    iter=0
+    for j in ./*.xyz ; do
+	if [ $iter -lt $N ] ; then
+	mkdir $stpth/data/$name/sample${iter}
+	cp $j $stpth/data/$name/sample${iter}/start.in
+	cp ${templ} $stpth/data/$name/sample${iter}/
+	sed -i 's/SAMPLE/s'$iter'/' $stpth/data/$name/sample${iter}/run_sim
+	fi
+	((iter++))
+    done	#skonczylem wszystkie stech.xyz
+    #musze dorobic do N?
+    if [ $iter -lt $N ]; then
+    nr_stech=$iter
+    repeat=`awk -v n=$N -v d=$iter 'BEGIN{printf "%1.0d", n/d }'`
+    
+    for (( k=0; k<$repeat; k++ )); do
+	for j in ./*.xyz ; do
+	    if [ $iter -lt $N ] ; then
+		mkdir $stpth/data/$name/sample${iter}
+		cp $j $stpth/data/$name/sample${iter}/start.in
+		cp ${templ} $stpth/data/$name/sample${iter}/
+		sed -i 's/SAMPLE/s'$iter'/' $stpth/data/$name/sample${iter}/run_sim
+	    fi
+	    ((iter++))
+	done	#skonczylem wszystkie stech.xyz
+    done
+    fi
+    cd $stpth/data/$name
+    echo "iter/ repeat: ("$repeat"+1)*"$nr_stech"="$iter
+    nr_dir=`ls -l | grep -v ^l | wc -l`
+    echo "nr dir/ nr stech: ("$nr_dir"-1)="$N
+    cd $stpth
+done
+
