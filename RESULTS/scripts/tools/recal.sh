@@ -5,9 +5,9 @@ SOURCE="${BASH_SOURCE[0]}"
 PTH=$( dirname "$SOURCE" )
 SRC=$PTH
 
-echo $0 >> tmp
-echo $PWD >> tmp
-echo $SRC >> tmp
+#echo $0 >> tmp
+#echo $PWD >> tmp
+#echo $SRC >> tmp
 
 echo "Recalculating..."
 

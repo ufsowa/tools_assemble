@@ -7,7 +7,7 @@ name = sys.argv[2]
 
 #out1="int"+name
 #file_out=open(out1,'w')
-print sys.argv[0]
+#print sys.argv[0]
 
 #delta=int(sys.argv[3])
 #dc=1
