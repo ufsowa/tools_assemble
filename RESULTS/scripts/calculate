@@ -5,6 +5,11 @@ PTH=$( dirname "$SOURCE" )
 
 SRC="$PTH/tools"
 
+echo "nodeid/procid: "$SLURM_NODEID $SLURM_PROCID
+echo "start: "`date`
 #$SRC/recal.sh
-$SRC/static_avg.sh "half" "last"
-$SRC/static_loop.sh 20
+echo "avg: "`date`
+time $SRC/static_avg.sh "half" "last"
+echo "loop: "`date`
+time $SRC/static_loop.sh 20
+echo "end " `date`
