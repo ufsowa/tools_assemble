@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+
+echo "Sredniuje..."
+
+module load python-numpy
+
+
+
+stpth=$PWD
+
+lista=`ls S*static.r2`
+min="-50"
+max="last"
+every=1
+./static_avg.py $min $max "f_tracer.dat" $lista
+
+lista=`ls S*static.r`
+min="50"
+max="last"
+every=1
+./static_avg.py $min $max "f_coll.dat" $lista
