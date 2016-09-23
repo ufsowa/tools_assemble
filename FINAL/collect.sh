@@ -2,13 +2,12 @@
 
 export LC_ALL=C
 
-NAME="SYS_ORD_SYM"
+NAME="RESULTS"
 #NAME="SYS_ORD_ASY"
 ST=$PWD
-DEST=$ST/$NAME
-DEST=$DEST/results
+DEST=$ST/../$NAME/results
 
-SRC=$ST/$NAME/$NAME
+SRC=$ST/results
 mkdir $SRC
 
 #mkdir $NAME/results
