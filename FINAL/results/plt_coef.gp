@@ -1,5 +1,11 @@
+#!/usr/bin/env bash
 
-file='results_rnd.dat'
+name="results_coef.dat"
+name="results_rnd.dat"
+
+
+echo "
+file='${name}'
 
 set key center top
 
@@ -14,4 +20,6 @@ plot file u 1:8 t 'DIa', file u 1:9 t 'DIb'
 #plot file u 1:14 t 'D_np'
 
 pause -1
+" > to_plot
 
+gnuplot to_plot
