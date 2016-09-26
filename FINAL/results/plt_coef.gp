@@ -35,3 +35,13 @@ gnuplot to_plot
     # fab*fba = faa*fbb - (xa*fb*(faa + fab) + cb*fa*(fbb + fba) )
     # fab*fba = faa + fbb - fa*(fbb + fba)
     # fab*fba = faa + fbb - fb*(faa + fab)
+
+
+#hints
+
+#	if xa -> 0 then faa -> fa 
+#	if xa -> 1 then faa -> 1	fa -> f0	fab -> 0
+#	
+#	
+#	
+#	
