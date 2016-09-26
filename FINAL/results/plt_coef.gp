@@ -23,3 +23,15 @@ pause -1
 " > to_plot
 
 gnuplot to_plot
+
+#tests for faa*fbb - fab*fba
+    #faa*fbb - fab*fba = xa*fb*(faa+fab) + xb*fa*(fbb+fba)
+    #faa*fbb - fab*fba = fa*fbb + fb*faa -fa*fb
+    #faa*fbb - fab*fba = fa*(fbb + fbb)		#for A atoms
+    #faa*fbb - fab*fba = fb*(faa + fab)		#for B atoms
+
+#tests for fab*fba
+    # fab*fba = (faa-fa)*(fbb-fb) 
+    # fab*fba = faa*fbb - (xa*fb*(faa + fab) + cb*fa*(fbb + fba) )
+    # fab*fba = faa + fbb - fa*(fbb + fba)
+    # fab*fba = faa + fbb - fb*(faa + fab)
