@@ -1,6 +1,0 @@
-/home/peter/tools_assemble/RESULTS/scripts/tools/static_avg.py:70: RuntimeWarning: invalid value encountered in divide
-  Da=r2a/time
-/home/peter/tools_assemble/RESULTS/scripts/tools/static_avg.py:72: RuntimeWarning: invalid value encountered in divide
-  Na1=na1/time
-/home/peter/tools_assemble/RESULTS/scripts/tools/static_avg.py:73: RuntimeWarning: invalid value encountered in divide
-  Na2=na2/time

@@ -13,13 +13,12 @@ name = sys.argv[2]
 #dc=1
 #mc=0
 
-main_s,sub_s,vx,vy,vz,v0,v1,v2,ax,ay,az,a0,a1,a2,bx,by,bz,b0,b1,b2,NV,NA,NB=np.loadtxt(plik, skiprows=1, unpack=True)
+main_s,time,vx,vy,vz,v0,v1,v2,ax,ay,az,a0,a1,a2,bx,by,bz,b0,b1,b2,NV,NA,NB=np.loadtxt(plik, skiprows=1, unpack=True)
 
-step=main_s
-time=main_s*sub_s
+step=v0/NV
 
-NN=np.sqrt(2.0)	#kwadrat dlugosci skoku w NN
-NNN=2.0	#kwadrat dlugosci skoku w NNN
+NN=np.sqrt(3.0)	#kwadrat dlugosci skoku w NN
+NNN=np.sqrt(4.0)	#kwadrat dlugosci skoku w NNN
 
 na = (a1*NN*NN + a2*NNN*NNN)
 nb = (b1*NN*NN + b2*NNN*NNN)

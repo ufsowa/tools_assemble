@@ -25,9 +25,9 @@ for VAR in $num; do
 #    d=`echo "$Ac-$A" | bc`;
     d=`awk -v a=$Ac -v b=$A 'BEGIN{inp=a-b; printf "%d", inp}'`;
     dp=`echo $d | tr -d -`
-    mkdir  $simdir/stech_$VAR
-    cp $tplt/* $simdir/stech_$VAR
-    cd $simdir/stech_$VAR
+    mkdir  $simdir/S$VAR
+    cp $tplt/* $simdir/S$VAR
+    cd $simdir/S$VAR
 
     sed -i 's/TEMPERATURA/'$T'/' $FILE
     sed -i 's/VAC/'$V'/' $FILE
