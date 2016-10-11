@@ -1,15 +1,17 @@
-Method: 3
+Method: 5
+INSERT 3 VAC 1 0
+INSERT 3 VAC 2 0
 INSERT 3 ATOMS
-DIRECT 3 5 40000 1000.0
-DIRECT 3 1000 2000 1000.0
+DIRECT 3 50 1000000 TEMPERATURA
+DIRECT 3 10000 2000 TEMPERATURA
 Save: 2
 NandE 1 0
-make_pic 7 10 0 0 0 50 50 50
+make_pic 7 100 0 0 0 50 50 50
 Options: 0
 Memory_Size:
 25 25 25
-Def_atomic_zone:
-1.39 1.42 1.5 1.5 1.5
+Interaction_radious:
+1.6 1.8 1.5 1.5 1.5
 Region_area:/</
 0 0 0 50 50 50
 Simulation_area:/</
@@ -18,4 +20,4 @@ Boundary_conditions:?energy_atoms?/<0/=0/0<vec_transition
 50 50 50 50 50 50
 Build_starting_structure:ile?yes?no/st_end_from/
 1 0
-left.in 0 0 0 50 50 50 0 0 0 0
+left.in 10 0 0 50 40 40 0 0 0 0
