@@ -2,12 +2,12 @@
 
 export LC_ALL=C
 
-NAME="RESULTS"
+NAME="TD_C2"
 #NAME="SYS_ORD_ASY"
 ST=$PWD
-DEST=$ST/../$NAME/results
+DEST=$ST/../RESULTS/results
 
-SRC=$ST/results
+SRC=$ST/$NAME
 mkdir $SRC
 
 #mkdir $NAME/results
@@ -20,9 +20,9 @@ for stech in S*; do
 #    echo "For $stech raw in R: " `ls results/R/r_* | wc -l` "R2:" `ls results/R2/r2_* | wc -l`
 #    echo "For $stech raw in R: " `ls results/R/raw_* | wc -l` "R2:" `ls results/R2/raw_* | wc -l`
 
-#    echo "For $stech " 
-#    ls -l $stech/R/static.*.dat
-#    ls -l $stech/R2/static.*.dat
+    echo "For $stech " 
+    ls -l ./R/static.*.dat
+    ls -l ./R2/static.*.dat
 
 #    cd ..
 

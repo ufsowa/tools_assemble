@@ -21,7 +21,10 @@ def cal_mean(mini,maxi,data,fname,k):
 	    RESULTS=[]
 	    break;
 	finite=i[np.isfinite(i)]
-	new=np.mean(finite)
+	if(len(finite)==0):
+	    new=np.nan
+	else:
+	    new=np.mean(finite)
 	RESULTS.append(new)
 #    print mini,maxi,fname,k, len(RESULTS)
     if RESULTS:
@@ -37,10 +40,11 @@ def total_mean(DATA):
     if(len(DATA)==0):
 	print "no data in the bin";exit(1);
     nr_row=DATA[0].size
-    if(nr_row>1):
+    if(nr_row==1):
 	#do nothing if only one row in the bin
-	#col=len(DATA)
-	#DATA=np.reshape(DATA,(col,1))
+	col=len(DATA)
+	DATA=np.reshape(DATA,(col,1))
+    if(nr_row>0):
 	RESULTS=[]; 
 	for i in range(0,len(DATA)):
 	    d=DATA[i]
@@ -48,7 +52,7 @@ def total_mean(DATA):
 	    new=np.nanmean(finite)
 	    sig=np.nanstd(finite)
 	    RESULTS.append(new)
-	    RESULTS.append(sig)
+	#    RESULTS.append(sig)
 	fout.write("%f" % (RESULTS[0]))
 	for i in RESULTS[1:]:
 	    fout.write(" %f" % (i))
@@ -64,23 +68,8 @@ ncol=0
 
 for k in pliki:
     lenght=len(open(k,'r').readline().split())
-    DATA=[]
-    if(lenght==10):
-	step,time,r2a,r2b,fa,fb,na1,na2,nb1,nb2=np.loadtxt(k, unpack=True )
-	Da=r2a/time
-	Db=r2b/time
-	Na1=na1/time
-	Na2=na2/time
-	Nb1=nb1/time
-	Nb2=nb2/time
-	DATA=[step,time,Da,Db,fa,fb,Na1,Na2,Nb1,Nb2]
-    elif(lenght==6):
-    	step,time,Da,Db,fa,fb=np.loadtxt(k, unpack=True )
-    	DATA=[step,time,Da,Db,fa,fb]
-    else:
-	print "wrong data format in file"
-	sys.exit();
-
+    DATA=np.loadtxt(k, unpack=True )
+    step=DATA[0]
     if(sys.argv[1]=="loop"):
 	MAX=int(sys.argv[2])
 	BIN=float(sys.argv[3])

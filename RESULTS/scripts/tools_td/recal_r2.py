@@ -31,13 +31,13 @@ fa=Ra/ja
 fb=Rb/jb
 Da=Ra/time
 Db=Rb/time
-a1=a1/NA
-a2=a2/NA
-b1=b1/NB
-b2=b2/NB
+a1=a1/NA/time
+a2=a2/NA/time
+b1=b1/NB/time
+b2=b2/NB/time
 
 out2="raw"+name
-np.savetxt(out2,zip(step,time,Ra,Rb,fa,fb,a1,a2,b1,b2), "%f")
+np.savetxt(out2,zip(step,time,Da,Db,fa,fb,a1,a2,b1,b2), "%5.10f")
 
 
 #end=len(Ra);dt=0; deltaT=0;T=0;Sna1=0;Sna2=0;Snb1=0;Snb2=0;Sra=0;Srb=0;Sfa=0;Sfb=0;counter=0;numerl=0;
