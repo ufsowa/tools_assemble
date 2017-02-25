@@ -17,7 +17,7 @@ def cal_mean(DATA):
 	new=np.mean(d)
 	sig=np.std(d)
 	RESULTS.append(new)
-	RESULTS.append(sig)
+#	RESULTS.append(sig)
     return RESULTS
 
 
@@ -32,7 +32,7 @@ for k in pliki:
     ncol=len(open(k,'r').readline().split())
     print k,ncol
 
-    DATA=np.loadtxt(k, unpack=True, usecols=range(4,ncol,2))
+    DATA=np.loadtxt(k, unpack=True, usecols=range(2,ncol))
     print len(DATA)
 
     if(sys.argv[1]=="half" and len(DATA)>0):
@@ -47,9 +47,11 @@ for k in pliki:
     
     RESULTS=cal_mean(DATA)
 
-    stech = re.findall("[-+]?\d+[\.]?\d*", k) 
+    ids = re.findall("[-+]?\d+[\.]?\d*", k) 
     if RESULTS:
-	fout1.write("%f" % (float(stech[0])))
+	fout1.write("%f" % (float(ids[0])))
+	for i in ids[1:]:
+	    fout1.write(" %f" % (float(i)))
 	for i in RESULTS:
 	    fout1.write(" %f" % (i))
 	fout1.write("\n")

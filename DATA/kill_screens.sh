@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Closing:"
-for session in $(screen -ls | grep -o '[0-9]*\.sS[0-9]' )
+for session in $(screen -ls | grep -o '[0-9]*\.runT[0-9]' )
 do
 #    echo $session
     session=`echo $session  | grep -o '[0-9]\{2,\}' | head -1`

@@ -14,15 +14,15 @@ mkdir $SRC
 #mv $FROM/results $SRC/$NAME/results
 
 cd $DEST
-for stech in S*; do
+for stech in T*; do
     cd $stech
-    echo "For $stech raw in R:" `ls results/R/r_* | wc -l` "R2:" `ls results/R2/r2_* | wc -l`
+    echo "For $stech raw in R:" `ls results/r/r_* | wc -l` "R2:" `ls results/r2/r2_* | wc -l`
 
 #    echo "For $stech " 
 #    ls -l results/R/static.*.dat
 #    ls -l results/R2/static.*.dat
 
-#    echo $stech
+    echo $stech
     mv results $SRC/$stech
     cd ..
 #    if [ -e $DEST/$stech ]; then

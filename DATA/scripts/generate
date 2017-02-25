@@ -7,6 +7,7 @@ N=$2
 export LC_NUMERIC=C
 SOURCE="${BASH_SOURCE[0]}"
 PTH=$( dirname "$SOURCE" )
+
 stpth=$PWD
 TEMP=$PWD/template
 templ=$PWD/template/*
@@ -22,6 +23,7 @@ echo "Gen dir tree..."
 
 for i in ./S$1; do
     name=${i#./}
+    rm -R $stpth/data/$name
     mkdir $stpth/data/$name
     cd $i
     iter=0

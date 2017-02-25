@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-#SBATCH -J ORD_SYM
-#SBATCH -N 1 --ntasks-per-node=24
-#SBATCH -A mcdyfuzja
+#SBATCH -J TD
+#SBATCH -N 1 --ntasks-per-node=1
+#SBATCH -A difatom
 #SBATCH -p plgrid
-#SBATCH --time=72:00:00
+#SBATCH --time=24:00:00
 #SBATCH --error="error.err"
 #SBATCH --output="output.out"
 
@@ -20,11 +20,11 @@ echo $SLURM_JOBID > jobid
 
 
 # variables
-ID="sym"
+ID="diff"
 
 # paths
 TO=$PWD
-NAME="S*"
+NAME="T*"
 DEST=${TO}"/data/"
 SRC=$PWD/scripts
 
@@ -35,7 +35,7 @@ for i in ${NAME}; do
 #    screen -dmS $name
 #    screen -S $name -X screen $SRC/calculate
 #    srun -J $name -p plgrid -A mcdyfuzja -N 1 -n 1 -o job%j.out time $SRC/calculate &> log &
-    srun -O -n 1 $SRC/calculate &> log &
+    srun -n 1 $SRC/calculate &> log &
     cd ${DEST}
 done
 

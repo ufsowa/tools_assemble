@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FOR="j r2 r bar n"
+
 SOURCE="${BASH_SOURCE[0]}"
 PTH=$( dirname "$SOURCE" )
 
@@ -7,9 +9,9 @@ SRC="$PTH/tools"
 
 echo "nodeid/procid: "$SLURM_NODEID $SLURM_PROCID
 echo "start: "`date`
-#$SRC/recal.sh
+time $SRC/recal.sh "$FOR"
 echo "avg: "`date`
-time $SRC/static_avg.sh "half" "last"
+time $SRC/static_avg.sh "half" "last" "$FOR"
 echo "loop: "`date`
-time $SRC/static_loop.sh 20
+time $SRC/static_loop.sh 10 "$FOR"
 echo "end " `date`

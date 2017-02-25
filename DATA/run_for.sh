@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #VARIABLES
-NAME="S"
+NAME="T"
 DEST=${PWD}"/data/"
 SRC=$PWD/scripts
 

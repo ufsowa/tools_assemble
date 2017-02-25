@@ -1,9 +1,9 @@
 #!/bin/bash -l
 
-#SBATCH -J NAME
+#SBATCH -J name
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
-#SBATCH -A mcdyfuzja
+#SBATCH -A difatom
 #SBATCH -p plgrid
 #SBATCH --time=72:00:00
 #SBATCH --error="error.err"

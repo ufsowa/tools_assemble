@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#SBATCH -J ORD_SYM
+#SBATCH -J TD
 #SBATCH -N 1 --ntasks-per-node=24
-#SBATCH -A mcdyfuzja
+#SBATCH -A difatom
 #SBATCH -p plgrid
 #SBATCH --time=72:00:00
 #SBATCH --error="error.err"
@@ -24,7 +24,7 @@ ID="test"
 
 # paths
 TO=$PWD
-NAME="S*"
+NAME="T*"
 DEST=${TO}"/results"
 SRC=$PWD/scripts
 

@@ -6,7 +6,7 @@ DEST=${ST}/results
 
 
 tryb="r2"
-tryb="r"
+#tryb="r"
 
 
 for cf_l in S*_static.${tryb}; do

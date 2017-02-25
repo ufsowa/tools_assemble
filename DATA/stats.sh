@@ -3,12 +3,16 @@
 #VARIABLES
 NAME="T"
 DEST=${PWD}"/data/"
-SRC=$PWD/scripts
 
+
+screen -ls
+sleep 5s
+echo "Print log.run:"
 cd ${DEST}
 for i in ${NAME}*; do
     cd $i
     echo $i
-    $SRC/generate 1 300
+    name="run$i"
+    tail -1 log.run
     cd ${DEST}
 done
