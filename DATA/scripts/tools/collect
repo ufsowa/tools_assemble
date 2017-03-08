@@ -15,9 +15,9 @@ for i in ./S* ; do
     for j in ./sample* ; do
 	cd $j
 	echo $iter > results_id
-	mv total_dR.dat $outpth/r/r_$iter.dat
-	mv total_dR2.dat $outpth/r2/r2_$iter.dat
-	mv total_N.dat $outpth/n/n_$iter.dat
+	mv total_dR2*.dat $outpth/rr/rr_$iter.dat
+	mv total_dR*.dat $outpth/r/r_$iter.dat
+	mv total_N*.dat $outpth/n/n_$iter.dat
 	cp total_bar.dat $outpth/bar/bar_$iter.dat
 	mv total_bar.dat $outpth/j/j_$iter.dat
 

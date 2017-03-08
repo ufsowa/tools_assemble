@@ -4,6 +4,7 @@ export LC_ALL=C
 
 echo "Combaining files..."
 
+ID=$2
 mark="total_"
 SCALE="1.0"
 
@@ -15,7 +16,7 @@ SCALE="1.0"
 #echo $tmp_pth $SCALE
 
 rm -f files 
-mask=dR.dat
+mask=dR${ID}.dat
 for i in *[0-9]$mask; do
     echo ${i%%${mask}} >> files
 done
@@ -25,8 +26,8 @@ mv tmp files
 
 last_step=0
 last_time=0
-mask=N.dat
-rm ${mark}${mask}
+mask=N${ID}.dat
+rm -f ${mark}${mask}
 for i in $(cat files); do
     FILE=$i${mask}
     if ! [ -e bad_data ]; then
@@ -40,7 +41,7 @@ done
 last_step=0
 last_time=0
 mask=bar.dat
-rm ${mark}${mask}
+rm -f ${mark}${mask}
 for i in $(cat files); do
     FILE=$i${mask}
     if ! [ -e bad_data ]; then
@@ -53,7 +54,7 @@ done
 
 last_step=0
 last_time=0
-mask=dR2.dat
+mask=dR2${ID}.dat
 rm -f ${mark}${mask}
 for i in $(cat files); do
     FILE=$i${mask}
@@ -66,7 +67,7 @@ done
 
 last_step=0
 last_time=0
-mask=dR.dat
+mask=dR${ID}.dat
 rm -f ${mark}${mask}
 for i in $(cat files); do
     FILE=$i${mask}
@@ -76,8 +77,8 @@ for i in $(cat files); do
     last_time=`awk 'END{print $2}' ${mark}${mask}`
     fi
 done
-datar2="${mark}dR2.dat"
-datar="${mark}dR.dat"
+datar2="${mark}dR2${ID}.dat"
+datar="${mark}dR${ID}.dat"
 
 if ! [ -e bad_data ]; then
 sort -n -k2,2 $datar2 > tmp && mv tmp $datar2

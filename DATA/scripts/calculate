@@ -7,8 +7,8 @@ SRC="$PTH/tools"
 #echo "$0" > tmp
 #echo $PWD >> tmp
 #echo $SRC >> tmp
-
-$SRC/combine
+echo $1
+$SRC/combine "$1"
 $SRC/collect
 
 #./integrate

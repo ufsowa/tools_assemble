@@ -20,7 +20,7 @@ for i in ./S* ; do
 	((iter++))
 	echo $iter
 	cd $j
-	$SRC/com_files ${src_file}
+	$SRC/com_files ${src_file} $1
 	cd ..
     done
     cd ..

@@ -35,7 +35,8 @@ for i in ${NAME}; do
 #    screen -dmS $name
 #    screen -S $name -X screen $SRC/calculate
 #    srun -J $name -p plgrid -A mcdyfuzja -N 1 -n 1 -o job%j.out time $SRC/calculate &> log &
-    srun -n 1 $SRC/calculate &> log &
+#    srun -n 1 $SRC/calculate &> log &
+    srun -n 1 $SRC/calculate "_global" &> log &
     cd ${DEST}
 done
 
